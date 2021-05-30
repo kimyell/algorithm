@@ -2,7 +2,7 @@
 
 function solution(pipeline) {
   const stack = [];
-  let lastElement = '';
+  let beforeElement = '';
   let totalCount = 0;
 
   for (const element of pipeline) {
@@ -11,13 +11,13 @@ function solution(pipeline) {
     } else {
       stack.pop();
 
-      if (lastElement === '(') {
+      if (beforeElement === '(') {
         totalCount += stack.length;
       } else {
         totalCount ++;
       }
     }
-    lastElement = element;
+    beforeElement = element;
   }
   console.log(totalCount);
 }
