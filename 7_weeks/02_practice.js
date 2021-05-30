@@ -1,6 +1,6 @@
 // 버블 정렬: 인접한 두 원소를 검사하여 정렬한다.
 
-const bubbleSort = function(arr) {
+function bubbleSort(arr) {
   const length = arr.length;
   for (let i = 0; i < length - 1; i++) {
     for (let j = 0; j < length - 1 - i; j++) {
