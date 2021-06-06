@@ -5,7 +5,7 @@ function solution(arr) {
   let originalArr = arr.slice();
   arr = quickSort(arr);
 
-  for (let i=0; i<arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] !== originalArr[i]) {
       changeIndex.push(i+1);
     }
@@ -20,7 +20,7 @@ function quickSort(arr) {
   let left = [];
   let right = [];
   let pivot = arr[0];
-  for (let i=1; i<length; i++) {
+  for (let i = 1; i < length; i++) {
     if (arr[i] < pivot) {
       left.push(arr[i]);
     } else {
@@ -30,4 +30,4 @@ function quickSort(arr) {
   return quickSort(left).concat(pivot, quickSort(right));
 }
 
-console.log(solution(changeArr));
+console.log(solution(changeArr)); // [3, 8]
