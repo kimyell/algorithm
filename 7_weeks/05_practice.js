@@ -14,13 +14,13 @@ function solution(arr) {
 }
 
 function quickSort(arr) {
-  const len = arr.length;
-  if(len === 0) return [];
+  const length = arr.length;
+  if (length === 0) return [];
 
   let left = [];
   let right = [];
   let pivot = arr[0];
-  for(let i=1; i<len; i++) {
+  for (let i=1; i<length; i++) {
     if (arr[i] < pivot) {
       left.push(arr[i]);
     } else {
