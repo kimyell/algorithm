@@ -1,7 +1,7 @@
 function getCount(tracks, distance) {
   let horseCount = 1;
-  let next = tracks[0] + distance; // 거리 = 첫 번째 마구간 + 기준 거리
-
+  let next = tracks[0] + distance; // 다음 마구간 위치 = 첫 번째 마구간 + 기준 거리
+  // next = 4
   tracks.forEach(track => {
     if (next <= track) {
       next = track + distance;
@@ -20,7 +20,7 @@ function solution(count, tracks) {
   }
 
   // 최적의 조건 : 전체 거리 / 말의 수
-  let distance = Math.floor(max / count);  // 가장 먼 거리 / 말의 수 --> 3
+  let distance = Math.floor(max / count);  // 가장 먼 거리 / 말의 수 --> 평균 거리 3
   let flag = false;
 
   while (true) {
@@ -34,7 +34,7 @@ function solution(count, tracks) {
     }
 
     if (count < horseCount) {
-      if (flag) distance;
+      if (flag) return distance;
       distance ++;
     } else {
       distance --;
@@ -43,6 +43,6 @@ function solution(count, tracks) {
   }
 }
 
-console.log(solution(3, [1, 2, 8, 4, 9]));
+console.log(solution(4, [1, 2, 8, 4, 9]));
 //5 3
 //1 2 8 4 9
