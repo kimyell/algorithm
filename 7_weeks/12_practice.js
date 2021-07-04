@@ -1,10 +1,10 @@
-function getCount(tracks, stall) {
+function getCount(tracks, distance) {
   let horseCount = 1;
-  let distance = tracks[0] + stall;
+  let next = tracks[0] + distance; // 거리 = 첫 번째 마구간 + 기준 거리
 
   tracks.forEach(track => {
-    if (distance <= track) {
-      distance = track + stall;
+    if (next <= track) {
+      next = track + distance;
       horseCount ++;
     }
   });
@@ -12,32 +12,32 @@ function getCount(tracks, stall) {
 }
 
 function solution(count, tracks) {
-  tracks.sort((a, b) => a - b);
-  const max = Math.max(...tracks);
+  tracks.sort((a, b) => a - b);       // 1. 정렬
+  const max = Math.max(...tracks);    // [1,2,4,8,9] 의 max 값 --> 9
 
   if (count === 2) {
-    return max - Math.min(...tracks);
+    return max - Math.min(...tracks); // [1,2,4,8,9] 의 최댓값에서 최솟값을 뺀 값
   }
 
-  let stall = Math.floor(max / count);
-  let flag = false;
   // 최적의 조건 : 전체 거리 / 말의 수
+  let distance = Math.floor(max / count);  // 가장 먼 거리 / 말의 수 --> 3
+  let flag = false;
 
   while (true) {
-    const horseCount = getCount(tracks, stall);
+    const horseCount = getCount(tracks, distance);
 
-    console.log("stall : " + stall);
+    console.log("distance : " + distance);
     console.log("horseCount : " + horseCount);
 
     if (count == horseCount) {
-      return stall;
+      return distance;
     }
 
     if (count < horseCount) {
-      if (flag) stall;
-      stall ++;
+      if (flag) distance;
+      distance ++;
     } else {
-      stall --;
+      distance --;
       flag = true;
     }
   }
